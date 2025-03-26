@@ -9,6 +9,7 @@ import com.cpixelstudios.newsnow.Api.RetrofitClient
 import com.cpixelstudios.newsnow.Config.Preferences
 import com.cpixelstudios.newsnow.Config.ViewController
 import com.cpixelstudios.newsnow.Models.LoginModel
+import com.cpixelstudios.newsnow.Models.LoginRequest
 import com.cpixelstudios.newsnow.R
 import com.cpixelstudios.newsnow.databinding.ActivityLoginBinding
 import retrofit2.Call
@@ -45,86 +46,69 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
-//        binding.linearSubmit.setOnClickListener {
-//            if (!ViewController.noInterNetConnectivity(applicationContext)) {
-//                ViewController.customToast(applicationContext, "Please check your connection ")
-//            } else {
-//                loginApi()
-//            }
-//        }
+
+        binding.txtNext.setOnClickListener {
+            if (!ViewController.noInterNetConnectivity(applicationContext)) {
+                ViewController.customToast(applicationContext, "Please check your connection ")
+            } else {
+                loginApi()
+            }
+        }
 
     }
 
+    private fun loginApi() {
+        val email = binding.editEmail.text?.trim().toString()
+        val password = binding.passwordEdit.text?.trim().toString()
 
-//    private fun loginApi() {
-//        val phone = binding.phoneEdit.text?.trim().toString()
-//        val password = binding.passwordEdit.text?.trim().toString()
-//
-//        ViewController.hideKeyBoard(this@LoginActivity )
-//
-//
-//        if (phone.isEmpty()) {
-//            ViewController.customToast(applicationContext, "Enter Email")
-//            return
-//        }
-//        if (password.isEmpty()) {
-//            ViewController.customToast(applicationContext, "Enter password")
-//            return
-//        }
-//
-//        if (!ViewController.validateMobile(phone)) {
-//            ViewController.customToast(applicationContext, "Enter Valid mobile number")
-//        } else {
-//            ViewController.showLoading(this@LoginActivity)
-//
-//            val apiServices = RetrofitClient.apiInterface
-//            val call =
-//                apiServices.loginApi(
-//                    getString(R.string.api_key),
-//                    phone,
-//                    password, "token"
-//                )
-//
-//            call.enqueue(object : Callback<LoginModel> {
-//                override fun onResponse(
-//                    call: Call<LoginModel>,
-//                    response: Response<LoginModel>
-//                ) {
-//                    ViewController.hideLoading()
-//                    try {
-//                        if (response.isSuccessful) {
-//
-//                            if (response.body()?.code==1){
-//                                Preferences.saveStringValue(this@LoginActivity, Preferences.userId,response.body()?.response!!.customer_id.toString())
-//                                Preferences.saveStringValue(this@LoginActivity, Preferences.name,response.body()?.response!!.full_name.toString())
-//                                Preferences.saveStringValue(this@LoginActivity, Preferences.mobileNumber,response.body()?.response!!.mobile_number.toString())
-//                                Preferences.saveStringValue(this@LoginActivity, Preferences.address,response.body()?.response!!.address.toString())
-//                                Preferences.saveStringValue(this@LoginActivity, Preferences.email,response.body()?.response!!.email_id.toString())
-//
-//                                val intent = Intent(this@LoginActivity, DashBoardActivity::class.java)
-//                                startActivity(intent)
-//                                finish()
-//                            }else {
-//                                ViewController.customToast(applicationContext, "Login Failed")
-//                            }
-//
-//
-//                        } else {
-//                            ViewController.customToast(applicationContext, "Invalid Mobile Number")
-//                        }
-//                    } catch (e: NullPointerException) {
-//                        e.printStackTrace()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<LoginModel>, t: Throwable) {
-//                    ViewController.hideLoading()
-//                    ViewController.customToast(applicationContext, "Invalid Credentials")
-//                }
-//            })
-//
-//        }
-//    }
+        ViewController.hideKeyBoard(this@LoginActivity )
+
+        if (email.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Email")
+            return
+        }
+        if (password.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter password")
+            return
+        }
+
+        if (!ViewController.validateEmail(email)) {
+            ViewController.customToast(applicationContext, "Enter Valid email")
+        } else {
+            ViewController.showLoading(this@LoginActivity)
+
+            val loginRequest = LoginRequest(email = email, password = password)
+            val apiServices = RetrofitClient.apiInterface
+            val call = apiServices.loginApi(loginRequest)
+            call.enqueue(object : Callback<LoginModel> {
+                override fun onResponse(call: Call<LoginModel>, response: Response<LoginModel>) {
+                    if (response.isSuccessful) {
+
+                        if (response.body()?.status==true){
+                            Preferences.saveStringValue(this@LoginActivity, Preferences.userId,response.body()?.user!!.id.toString())
+                            Preferences.saveStringValue(this@LoginActivity, Preferences.name,response.body()?.user!!.name.toString())
+                            Preferences.saveStringValue(this@LoginActivity, Preferences.email,response.body()?.user!!.email.toString())
+
+                            val intent = Intent(this@LoginActivity, DashBoardActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }else {
+                            ViewController.customToast(applicationContext, "Login Failed")
+                        }
+
+                    } else {
+                        ViewController.customToast(applicationContext, "Invalid Email")
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginModel>, t: Throwable) {
+                    // Handle failure (network issues, etc.)
+                    ViewController.customToast(applicationContext, "Login Failed")
+                }
+            })
+
+        }
+    }
 
 
     override fun onBackPressed() {

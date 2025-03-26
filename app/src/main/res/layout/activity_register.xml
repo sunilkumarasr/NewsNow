@@ -53,6 +53,7 @@
                 android:textColor="@color/darkGray"/>
 
             <EditText
+                android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Enter your name"
@@ -73,6 +74,7 @@
                 android:layout_marginTop="10dp"/>
 
             <EditText
+                android:id="@+id/editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Enter your email"
@@ -94,6 +96,7 @@
                 android:layout_marginTop="10dp"/>
 
             <EditText
+                android:id="@+id/editMobile"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Enter your phone number"
@@ -115,6 +118,7 @@
                 android:layout_marginTop="10dp"/>
 
             <EditText
+                android:id="@+id/editPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Enter your password"
@@ -136,6 +140,7 @@
                 android:textSize="12sp" />
 
             <EditText
+                android:id="@+id/editCPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Confirm your password"
@@ -146,7 +151,6 @@
                 android:maxLength="10"
                 android:textColor="@color/black"
                 android:inputType="textPassword"/>
-
 
             <TextView
                 android:id="@+id/txtNext"
@@ -162,6 +166,7 @@
                 android:textSize="18sp"/>
 
             <TextView
+                android:id="@+id/txtLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an account? Sign up"

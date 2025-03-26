@@ -11,40 +11,34 @@ import com.cpixelstudios.newsnow.Models.ContactUsModel
 import com.cpixelstudios.newsnow.Models.DeleteCartResponse
 import com.cpixelstudios.newsnow.Models.ForgotModel
 import com.cpixelstudios.newsnow.Models.LoginModel
+import com.cpixelstudios.newsnow.Models.LoginRequest
 import com.cpixelstudios.newsnow.Models.PrivacyPolicyModel
 import com.cpixelstudios.newsnow.Models.RegisterModel
+import com.cpixelstudios.newsnow.Models.RegisterRequest
 import com.cpixelstudios.newsnow.Models.TermsAndConditionsModel
 import com.cpixelstudios.newsnow.Models.UpdateCartResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 
 
 interface ApiInterface {
 
-    @FormUrlEncoded
-    @POST("user_resistration")
+
+    @POST("register")
     fun registerApi(
-        @Field("api_key") apiKey: String,
-        @Field("full_name") fullName: String,
-        @Field("mobile_number") mobileNumber: String,
-        @Field("email_id") emailId: String,
-        @Field("state") state: String,
-        @Field("city") city: String,
-        @Field("pswrd") password: String,
-        @Field("address") address: String,
+        @Body registerRequest: RegisterRequest
     ): Call<RegisterModel>
 
-    @FormUrlEncoded
-    @POST("user_login")
+
+    @POST("login")
     fun loginApi(
-        @Field("api_key") apiKey: String,
-        @Field("username") username: String,
-        @Field("pswrd") password: String,
-        @Field("device_token") deviceToken: String
+        @Body loginRequest: LoginRequest
     ): Call<LoginModel>
+
 
     @FormUrlEncoded
     @POST("user_forget_password")
