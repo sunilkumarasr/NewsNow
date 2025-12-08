@@ -1,118 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.HomeFragment">
+    android:background="@color/white"
+    tools:context=".view.fragment.Home">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/whitebg">
+        tools:context=".MainActivity"
+        android:padding="20dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/whitebg"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/linearSearch"
+            <EditText
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:importantForAutofill="no"
+                android:queryHint="Search"
+                android:padding="10dp"
+                android:textColor="@color/app_gray_color"
+                android:drawableStart="@drawable/search_gray_icon"
+                android:textColorHint="@color/app_gray_color"
+                android:hint="@string/search"
+                android:drawablePadding="5dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/search_ic"
-                    app:tint="@color/txtdes"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@null"
-                    android:fontFamily="@font/teachers_medium"
-                    android:hint="@string/searchyourProducts"
-                    android:textSize="15sp"
-                    android:textColorHint="@color/txtdes" />
-            </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtCatHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/categories"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/teachers_medium"
-                android:textColor="@color/txtHeader"
-                android:textSize="18sp"/>
-
+                android:background="@drawable/et_background"
+                tools:ignore="TextFields" />
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewCategories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <com.denzcoskun.imageslider.ImageSlider
-                android:id="@+id/imageSlider"
+                android:layout_marginTop="5dp"
+                android:id="@+id/recycler"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:paddingTop="5dp"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
-                app:iss_auto_cycle="true"
-                app:iss_corner_radius="50"
-                app:iss_delay="2000"
-                app:iss_indicator_align="BOTTOM"
-                app:iss_period="2000"
-                app:iss_text_color="@color/black"
-                app:iss_title_background="@color/trance" />
-
+                android:layout_height="wrap_content"
+                android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                tools:ignore="UselessLeaf"
+                android:weightSum="2"
+                >
+                <TextView
                     android:layout_weight="1"
-                    android:text="@string/products"
-                    android:fontFamily="@font/teachers_medium"
-                    android:textColor="@color/txtHeader"
-                    android:textSize="18sp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/viewMoreProducts"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/trending"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:textSize="@dimen/home_screen_title_text_size"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="start"
+                    android:textColor="@color/app_black_color"
+                    tools:ignore="RelativeOverlap,SpUsage" />
+                <TextView
+                    android:id="@+id/futured_view_more"
                     android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/viewMore"
-                    android:fontFamily="@font/teachers_medium"
-                    android:textColor="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_more"
+                    android:fontFamily="@font/poppins_regular"
                     android:textSize="14sp"
-                    android:layout_gravity="center_vertical"/>
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    android:textColor="@color/app_black_color"
+                    tools:ignore="RelativeOverlap" />
             </LinearLayout>
-
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewProducts"
+                android:id="@+id/recycler_futured"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"/>
-
+                android:layout_height="wrap_content"
+                android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="UselessLeaf"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:weightSum="2">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/latest"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:textSize="@dimen/home_screen_title_text_size"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="start"
+                    android:textColor="@color/app_black_color"
+                    tools:ignore="RelativeOverlap,SpUsage" />
+                <TextView
+                    android:id="@+id/trending_view_more"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_more"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    android:textColor="@color/app_black_color"
+                    tools:ignore="RelativeOverlap" />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#37000000"
+        android:id="@+id/progress_bar">
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:id="@+id/progress_bar_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
-</layout>
+</RelativeLayout>

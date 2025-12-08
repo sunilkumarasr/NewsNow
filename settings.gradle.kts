@@ -9,7 +9,6 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-        maven { url = uri("https://jitpack.io") }
     }
 }
 dependencyResolutionManagement {
@@ -17,9 +16,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven { setUrl("https://jitpack.io") }
+        jcenter()
     }
 }
 
-rootProject.name = "News Now"
+rootProject.name = "newsatnow"
 include(":app")
+ 

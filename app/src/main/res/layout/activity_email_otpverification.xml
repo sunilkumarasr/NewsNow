@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Logins.ResetPasswordActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_background"
+        android:paddingBottom="150dp"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:paddingTop="20dp"
+            android:id="@+id/back"
+            android:drawableStart="@drawable/back_arrow_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:paddingStart="20dp"
+            android:gravity="center_vertical"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:paddingTop="100dp"
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OTP Verification"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:padding="20dp"
+            android:id="@+id/sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="please verify your email — we've sent a link to your inbox."
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/main_title"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_white_card"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintTop_toBottomOf="@id/top_section"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter the 6-digit codes sent to cpixelstudios@gmail.com"
+            android:textColor="@color/app_gray_color"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="start"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            tools:ignore="MissingConstraints" />
+
+        <com.chaos.view.PinView
+            android:layout_marginTop="10dp"
+            android:id="@+id/pinview"
+            style="@style/PinWidget.PinView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:cursorVisible="true"
+            android:gravity="center"
+            android:inputType="number"
+            android:itemBackground="@color/white"
+            app:hideLineWhenFilled="false"
+            android:textColor="@color/app_black_color"
+            app:itemCount="6"
+            app:itemHeight="50dp"
+            app:itemRadius="10dp"
+            app:itemWidth="50dp"
+            app:lineWidth="1dp"
+            app:itemSpacing="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/text"
+            />
+
+        <LinearLayout
+            android:id="@+id/resend_layout"
+            app:layout_constraintTop_toBottomOf="@+id/pinview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="10dp"
+            android:background="@drawable/et_background"
+            android:layout_marginTop="20dp"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:id="@+id/tv_verification_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code expires in 1:00"
+                android:textSize="14sp"
+                android:textColor="@color/app_gray_color"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/tv_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resend_otp"
+                android:textSize="14sp"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:textColor="@color/app_gray_color"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="Verify Code"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:background="@drawable/overlay_button"
+            android:textAllCaps="false"
+            app:cornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/resend_layout" />
+        <TextView
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't receive the code?"
+            android:textColor="@color/app_gray_color"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/button_submit"
+            android:layout_marginTop="16dp" />
+        <TextView
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resend code"
+            android:textColor="@color/app_main_color"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/account"
+            android:layout_marginTop="16dp" />
+        <TextView
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Need help? Contact Support"
+            android:textColor="@color/app_gray_color"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/signup"
+            android:layout_marginTop="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

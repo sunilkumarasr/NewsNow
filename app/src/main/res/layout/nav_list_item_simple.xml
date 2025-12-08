@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/fact_check"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            app:tint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fact Check"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@android:color/white"
+            android:layout_toEndOf="@id/item_icon"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/item_sub_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check Now"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/item_icon_refer"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/refer"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            app:tint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/item_title_refer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refer"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_toEndOf="@id/item_icon_refer"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/item_sub_action_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check Now"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp" />
+
+    </RelativeLayout>
+</LinearLayout>

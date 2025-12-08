@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/white"
+    android:id="@+id/card"
+    app:cardPreventCornerOverlap="false"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/live_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/skip"
+            android:layout_marginTop="10dp"
+            android:id="@+id/live_news_title"
+            android:maxLines="2"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/item_title_text_size"
+            android:gravity="bottom"
+            android:textColor="@color/app_black_color"
+            tools:ignore="RelativeOverlap" />
+
+    </LinearLayout>
+        <ImageView
+            android:id="@+id/play_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play_icon"
+            android:layout_centerInParent="true"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/home_icon"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/trending"
+        android:icon="@drawable/trending_icon"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/live"
+        android:icon="@drawable/live_streaming"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/video"
+        android:icon="@drawable/podcasts_icon"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/saved"
+        android:icon="@drawable/saved_icon"
+        tools:ignore="MenuTitle" />
+</menu>

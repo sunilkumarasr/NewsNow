@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".view.UserIntrestsActivity">
+    <TextView
+        android:id="@+id/what_interest"
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/what_interest"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textSize="26sp"
+        android:paddingStart="25dp"
+        android:gravity="start"
+        android:textColor="@color/app_black_color"
+        tools:ignore="RelativeOverlap,RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/follow_topic"
+        android:layout_below="@+id/what_interest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/follow_the_topic"
+        android:gravity="start"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:paddingStart="25dp"
+        android:textColor="@color/app_gray_color"
+        tools:ignore="RelativeOverlap,RtlSymmetry" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:layout_below="@+id/follow_topic"
+        android:padding="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recommendation"
+            android:gravity="start"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
+            android:maxLines="8"
+            android:ellipsize="end"
+            android:textColor="@color/app_black_color"
+            tools:ignore="RelativeOverlap" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_recommendation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/all_topic"
+            android:gravity="start"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
+            android:maxLines="8"
+            android:ellipsize="end"
+            android:textColor="@color/app_black_color"
+            tools:ignore="RelativeOverlap" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_interests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+        android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/build"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_light"
+        android:layout_width="match_parent"
+        android:textAllCaps="true"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTintMode="screen"
+        android:background="@drawable/overlay_button"
+        android:text="@string/build_my"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#37000000"
+        android:id="@+id/progress_bar">
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:id="@+id/progress_bar_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</RelativeLayout>
