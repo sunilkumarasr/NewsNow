@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.newsatnow.BaseActivity
+import com.example.newsatnow.Config.ViewController
 import com.example.newsatnow.databinding.ActivityLocationBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -15,16 +16,25 @@ import java.util.logging.Handler
 import kotlin.concurrent.schedule
 
 class LocationActivity : BaseActivity() {
+
     var binding : ActivityLocationBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLocationBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         binding?.manualLocation?.setOnClickListener {
-            val intent = Intent(this, ManualLocationActivity::class.java)
-            startActivity(intent)
+            val animations = ViewController.animation()
+            binding?.manualLocation?.startAnimation(animations)
+
+//            val intent = Intent(this, ManualLocationActivity::class.java)
+//            startActivity(intent)
+
+            this.getLocation()
         }
         binding?.locationButton?.setOnClickListener {
+            val animations = ViewController.animation()
+            binding?.locationButton?.startAnimation(animations)
             this.getLocation()
 
         }

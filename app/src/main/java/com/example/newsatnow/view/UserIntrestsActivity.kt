@@ -3,27 +3,19 @@ package com.example.newsatnow.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.newsatnow.BaseActivity
-import com.example.newsatnow.R
-import com.example.newsatnow.adapter.CatAdapter
-import com.example.newsatnow.adapter.FuturedAdapter
 import com.example.newsatnow.adapter.InterestsAdapter
 import com.example.newsatnow.adapter.RecommendationsAdapter
-import com.example.newsatnow.adapter.TrendingAdapter
 import com.example.newsatnow.databinding.ActivityUserIntrestsBinding
 import com.example.newsatnow.viewModel.InterestViewModel
-import com.example.newsatnow.viewModel.MainFeedViewModel
 
 class UserIntrestsActivity : BaseActivity() {
 
     var binding: ActivityUserIntrestsBinding? = null
+
     lateinit var userIntrestsViewModel: InterestViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +37,7 @@ class UserIntrestsActivity : BaseActivity() {
 
         })
         binding?.build?.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, DashBoardActivity::class.java)
             startActivity(intent)
         }
     }

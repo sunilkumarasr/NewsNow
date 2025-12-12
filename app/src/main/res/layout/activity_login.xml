@@ -36,7 +36,8 @@
                     android:gravity="center"
                     android:text="@string/welcome_back"
                     android:textColor="@color/white"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -48,7 +49,8 @@
                     android:gravity="center"
                     android:text="@string/login_to_continue"
                     android:textColor="@color/white"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:includeFontPadding="false" />
             </LinearLayout>
         </RelativeLayout>
 

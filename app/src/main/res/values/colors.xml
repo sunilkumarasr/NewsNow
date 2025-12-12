@@ -19,4 +19,6 @@
     <color name="latest_card_color">#F8F8F8</color>
     <color name="app_black_color">#1e1f20</color>
     <color name="app_cat_color">#997f79</color>
+    <color name="interest_text">#6d6c6c</color>
+    <color name="light_gray_bg">#f2f2f2</color>
 </resources>

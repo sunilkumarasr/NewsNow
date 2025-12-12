@@ -21,7 +21,6 @@ import com.example.newsatnow.view.FeaturedActivity
 import com.example.newsatnow.view.TrendingActivity
 import com.example.newsatnow.viewModel.MainFeedViewModel
 
-
 class Home : Fragment() {
 
    var binding : FragmentHomeBinding? = null

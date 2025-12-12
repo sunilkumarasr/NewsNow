@@ -38,27 +38,24 @@ object Repository {
     val mobileOtpReq = MutableLiveData<MobileOTPRequestResponseModel?>()
 
     fun getServicesApiCall(): MutableLiveData<Data> {
-
         val call = RetrofitClient.apiInterface.getFeed()
 
         call.enqueue(object: Callback<NewsScreenModel> {
             override fun onFailure(call: Call<NewsScreenModel>, t: Throwable) {
-                Log.v("DEBUG : ", t.message.toString())
+                Log.e("DEBUG : ", t.message.toString())
             }
 
-            override fun onResponse(
-                call: Call<NewsScreenModel>,
-                response: Response<NewsScreenModel>
-            ) {
-                Log.v("DEBUG : ", response.body().toString())
+            override fun onResponse(call: Call<NewsScreenModel>, response: Response<NewsScreenModel>) {
                 val data = response.body()
                 val msg = data?.data
-                serviceSetterGetter.value = msg
+                serviceSetterGetter.value = msg  // <-- updating LiveData
             }
         })
 
         return serviceSetterGetter as MutableLiveData<Data>
     }
+
+
 
     fun getArticalDetailsApiCall(articalId: String?): MutableLiveData<ArticalData> {
 

@@ -20,89 +20,107 @@ import java.util.Locale
 import androidx.core.content.edit
 import com.example.newsatnow.view.UserIntrestsActivity
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 open class BaseActivity : AppCompatActivity() {
+
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private val permissionId = 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        //getLocation()
     }
-     @SuppressLint("MissingPermission", "SetTextI18n")
-     open fun getLocation() {
-         if (checkPermissions()) {
-             if (isLocationEnabled()) {
-                 mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
-                     val location: Location? = task.result
-                     if (location != null) {
-                         val geocoder = Geocoder(this, Locale.getDefault())
-                         val list: List<Address> =
-                             geocoder.getFromLocation(location.latitude, location.longitude, 1)!!
-                         val locationPref = getSharedPreferences("LocationPref", Context.MODE_PRIVATE)
-                         locationPref.edit {
-                             putString("location", list[0].locality)
-                             apply()
-                         }
-                         val userLocation = locationPref.getString("location", "")
-                         if (userLocation != "") {
-                             val intent = Intent(this, UserIntrestsActivity::class.java)
-                             startActivity(intent)
-                         }
-                         Log.d("Location", "${list[0].locality}")
-                     }
-                 }
-             } else {
-                 Toast.makeText(this, "Please turn on location", Toast.LENGTH_LONG).show()
-                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                 startActivity(intent)
-             }
-         } else {
-             requestPermissions()
-         }
-     }
-     private fun isLocationEnabled(): Boolean {
-         val locationManager: LocationManager =
-             getSystemService(Context.LOCATION_SERVICE) as LocationManager
-         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-             LocationManager.NETWORK_PROVIDER
-         )
-     }
-     private fun checkPermissions(): Boolean {
-         if (ActivityCompat.checkSelfPermission(
-                 this,
-                 Manifest.permission.ACCESS_COARSE_LOCATION
-             ) == PackageManager.PERMISSION_GRANTED &&
-             ActivityCompat.checkSelfPermission(
-                 this,
-                 Manifest.permission.ACCESS_FINE_LOCATION
-             ) == PackageManager.PERMISSION_GRANTED
-         ) {
-             return true
-         }
-         return false
-     }
-     private fun requestPermissions() {
-         ActivityCompat.requestPermissions(
-             this,
-             arrayOf(
-                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                 Manifest.permission.ACCESS_FINE_LOCATION
-             ),
-             permissionId
-         )
-     }
-     @SuppressLint("MissingSuperCall")
-     override fun onRequestPermissionsResult(
-         requestCode: Int,
-         permissions: Array<String>,
-         grantResults: IntArray
-     ) {
-         if (requestCode == permissionId) {
-             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                 Toast.makeText(this, "Please wait location details are loading", Toast.LENGTH_LONG).show()
-                 getLocation()
-             }
-         }
-     }
+
+    @SuppressLint("MissingPermission")
+    open fun getLocation() {
+        if (checkPermissions()) {
+            if (isLocationEnabled()) {
+                mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
+                    val location: Location? = task.result
+                    if (location != null) {
+                        // Run Geocoder on background thread
+                        CoroutineScope(Dispatchers.IO).launch {
+                            try {
+                                val geocoder = Geocoder(this@BaseActivity, Locale.getDefault())
+                                val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                                val locality = addresses?.firstOrNull()?.locality
+
+                                // Save locality in SharedPreferences
+                                val locationPref = getSharedPreferences("LocationPref", Context.MODE_PRIVATE)
+                                locationPref.edit {
+                                    putString("location", locality)
+                                    apply()
+                                }
+
+                                // Navigate to UserIntrestsActivity on main thread
+                                withContext(Dispatchers.Main) {
+                                    if (!locality.isNullOrEmpty()) {
+                                        val intent = Intent(this@BaseActivity, UserIntrestsActivity::class.java)
+                                        startActivity(intent)
+                                        finish() // Optional: prevent back navigation
+                                    } else {
+                                        Toast.makeText(this@BaseActivity, "Location not found", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                                withContext(Dispatchers.Main) {
+                                    Toast.makeText(this@BaseActivity, "Failed to get location", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Please turn on location", Toast.LENGTH_LONG).show()
+                startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+            }
+        } else {
+            requestPermissions()
+        }
+    }
+
+    private fun isLocationEnabled(): Boolean {
+        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    }
+
+    private fun checkPermissions(): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            this, Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(
+                    this, Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermissions() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION),
+            permissionId
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults) // ✅ Call super
+
+        if (requestCode == permissionId &&
+            grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ) {
+            Toast.makeText(this, "Fetching location...", Toast.LENGTH_LONG).show()
+            getLocation()
+        }
+    }
+
 }

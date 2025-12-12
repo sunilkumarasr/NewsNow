@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.example.LoginPostData
 import com.example.newsatnow.BaseActivity
+import com.example.newsatnow.Config.Preferences
 import com.example.newsatnow.Config.ViewController
 import com.example.newsatnow.Utils.NoSpaceInputFilter
 import com.example.newsatnow.databinding.ActivityLoginBinding
@@ -95,6 +96,16 @@ class LoginActivity : BaseActivity() {
                         } else {
                             val token = serviceSetterGetter.token
                             if (token != null) {
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.name,
+                                    serviceSetterGetter.user?.name.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.email,
+                                    serviceSetterGetter.user?.email.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.phone,
+                                    serviceSetterGetter.user?.phone.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.is_verified,
+                                    serviceSetterGetter.user?.is_verified.toString())
+
+
                                 val intent = Intent(this, LocationActivity::class.java)
                                 startActivity(intent)
                             }

@@ -9,8 +9,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
@@ -29,15 +30,16 @@
         android:layout_height="wrap_content"
         android:text="Digital Magazine"
         android:fontFamily="@font/poppins_medium"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@android:color/white"
         android:layout_toEndOf="@id/item_icon_mag"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:includeFontPadding="false"/>
 
     <ImageView
         android:id="@+id/item_arrow_mag"
         android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_height="17dp"
         android:src="@drawable/next"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
@@ -46,8 +48,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
@@ -60,21 +63,23 @@
             android:layout_marginEnd="16dp"
             app:tint="@android:color/white" />
 
+
         <TextView
             android:id="@+id/item_title_vid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Videos"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_toEndOf="@id/item_icon_vid"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false"/>
 
         <ImageView
             android:id="@+id/item_arrow_vid"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="17dp"
             android:src="@drawable/next"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
@@ -83,8 +88,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
@@ -103,15 +109,16 @@
             android:layout_height="wrap_content"
             android:text="Viral News"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_toEndOf="@id/item_icon_viral"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false"/>
 
         <ImageView
             android:id="@+id/item_arrow_viral"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="17dp"
             android:src="@drawable/next"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
@@ -120,8 +127,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
@@ -140,15 +148,16 @@
             android:layout_height="wrap_content"
             android:text="NewsNow Exclusive"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_toEndOf="@id/item_icon_news"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false"/>
 
         <ImageView
             android:id="@+id/item_arrow_news"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="17dp"
             android:src="@drawable/next"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
@@ -157,8 +166,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
@@ -177,15 +187,16 @@
             android:layout_height="wrap_content"
             android:text="Contact Us"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_toEndOf="@id/item_icon_contact_us"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false"/>
 
         <ImageView
             android:id="@+id/item_arrow_contact"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="17dp"
             android:src="@drawable/next"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"

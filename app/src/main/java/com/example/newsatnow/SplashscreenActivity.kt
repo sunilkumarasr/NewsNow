@@ -9,6 +9,8 @@ import android.os.Handler
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.view.WindowCompat
+import com.example.newsatnow.Config.Preferences
+import com.example.newsatnow.view.DashBoardActivity
 import com.example.newsatnow.view.SlidesActivity
 
 class SplashscreenActivity : BaseActivity() {
@@ -24,13 +26,26 @@ class SplashscreenActivity : BaseActivity() {
     private fun redirectToMainScreen() {
         LogoAnimation()
 
+        val loginCheck = Preferences.loadStringValue(applicationContext, Preferences.LOGINCHECK, "")
+
+
         Handler(mainLooper).postDelayed({
-            startActivity(
-                Intent(
-                    this,
-                    SlidesActivity::class.java
-                ).apply { Intent.FLAG_ACTIVITY_SINGLE_TOP })
-            finish()
+            if (loginCheck.equals("Open")) {
+                startActivity(
+                    Intent(
+                        this,
+                        DashBoardActivity::class.java
+                    ).apply { Intent.FLAG_ACTIVITY_SINGLE_TOP })
+                finish()
+            }else{
+                startActivity(
+                    Intent(
+                        this,
+                        SlidesActivity::class.java
+                    ).apply { Intent.FLAG_ACTIVITY_SINGLE_TOP })
+                finish()
+            }
+
         }, 3000)
 
     }

@@ -1,22 +1,13 @@
 package com.example.newsatnow.adapter
 
-import android.animation.ObjectAnimator
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import androidx.activity.compose.LocalActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsatnow.Config.ViewController
-import com.example.newsatnow.R
 import com.example.newsatnow.databinding.ActivitySlidesBinding
 import com.example.newsatnow.databinding.SlideItemBinding
-import com.example.newsatnow.view.Logins.CreateAccountActivity
 import com.example.newsatnow.view.Logins.LoginActivity
-import com.example.newsatnow.view.MainActivity
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class OnboardingAdapter(
     contex: ActivitySlidesBinding,

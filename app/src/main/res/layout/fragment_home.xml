@@ -1,130 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/light_gray_bg"
     tools:context=".view.fragment.Home">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        android:padding="20dp">
+        tools:context=".MainActivity">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/searchView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:importantForAutofill="no"
-                android:queryHint="Search"
-                android:padding="10dp"
-                android:textColor="@color/app_gray_color"
-                android:drawableStart="@drawable/search_gray_icon"
-                android:textColorHint="@color/app_gray_color"
-                android:hint="@string/search"
-                android:drawablePadding="5dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/et_background"
-                tools:ignore="TextFields" />
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20sp"
+                    android:layout_height="20sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/search_gray_icon" />
+
+                <EditText
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/search"
+                    android:importantForAutofill="no"
+                    android:textColor="@color/app_gray_color"
+                    android:textColorHint="@color/app_gray_color"
+                    android:textSize="15sp"
+                    tools:ignore="TextFields" />
+            </LinearLayout>
+
+
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="5dp"
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
                 android:paddingTop="15dp"
                 android:paddingBottom="10dp"
-                tools:ignore="UselessLeaf"
+                android:gravity="center_vertical"
                 android:weightSum="2"
-                >
+                tools:ignore="UselessLeaf">
+
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/trending"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:textSize="@dimen/home_screen_title_text_size"
-                    android:gravity="center_vertical"
                     android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/trending"
                     android:textColor="@color/app_black_color"
-                    tools:ignore="RelativeOverlap,SpUsage" />
+                    android:textSize="17sp"
+                    android:includeFontPadding="false"
+                    tools:ignore="RelativeOverlap"
+                    />
+
                 <TextView
                     android:id="@+id/futured_view_more"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/view_more"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="14sp"
-                    android:gravity="end"
                     android:layout_gravity="end"
-                    android:textColor="@color/app_black_color"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    android:text="@string/view_more"
+                    android:textColor="@color/interest_text"
+                    android:textSize="14sp"
+                    android:includeFontPadding="false"
                     tools:ignore="RelativeOverlap" />
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_futured"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                tools:ignore="UselessLeaf"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="10dp"
-                android:weightSum="2">
+                android:weightSum="2"
+                tools:ignore="UselessLeaf">
+
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/latest"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:textSize="@dimen/home_screen_title_text_size"
-                    android:gravity="center_vertical"
                     android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/latest"
                     android:textColor="@color/app_black_color"
-                    tools:ignore="RelativeOverlap,SpUsage" />
+                    android:textSize="17sp"
+                    android:includeFontPadding="false"
+                    tools:ignore="RelativeOverlap" />
+
                 <TextView
                     android:id="@+id/trending_view_more"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/view_more"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="14sp"
-                    android:gravity="end"
                     android:layout_gravity="end"
-                    android:textColor="@color/app_black_color"
-                    tools:ignore="RelativeOverlap" />
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    android:text="@string/view_more"
+                    android:textColor="@color/interest_text"
+                    android:textSize="14sp"
+                    android:includeFontPadding="false"
+                    tools:ignore="RelativeOverlap"/>
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_trending"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#37000000"
-        android:id="@+id/progress_bar">
+        android:visibility="gone"
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true">
+
         <ProgressBar
-            android:layout_centerInParent="true"
             android:id="@+id/progress_bar_style"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -10,6 +10,7 @@ data class FeaturedArticles (
   @SerializedName("title"       ) var title      : String?   = null,
   @SerializedName("summary"     ) var summary    : String?   = null,
   @SerializedName("image"       ) var image      : String?   = null,
+  @SerializedName("thumbnail"       ) var thumbnail      : String?   = null,
   @SerializedName("video"       ) var video      : String?   = null,
   @SerializedName("voiceover"   ) var voiceover  : String?   = null,
   @SerializedName("source"      ) var source     : String?   = null,
@@ -19,11 +20,16 @@ data class FeaturedArticles (
   @SerializedName("category"    ) var category   : Category? = Category(),
   @SerializedName("created_at"  ) var createdAt  : String?   = null,
   @SerializedName("updated_at"  ) var updatedAt  : String?   = null,
+  @SerializedName("published_time"  ) var published_time  : String?   = null,
   @SerializedName("likes"          ) var likes         : Int?              = null,
   @SerializedName("dislikes"       ) var dislikes      : Int?              = null,
   @SerializedName("shares"         ) var shares        : Int?              = null,
   @SerializedName("views"          ) var views         : Int?              = null,
-  @SerializedName("comments"       ) var comments      : ArrayList<String> = arrayListOf(),
+  @SerializedName("comments"       ) var comments: ArrayList<Comment> = arrayListOf(),
   @SerializedName("comments_count" ) var commentsCount : Int?              = null
 
 )
+
+data class Comment(
+    @SerializedName("id"          ) var id         : Int?      = null,
+    )

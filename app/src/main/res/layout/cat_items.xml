@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cat_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="1dp"
+    android:layout_marginStart="15dp"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
+    <TextView
+        android:id="@+id/cat_text"
         android:layout_width="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-    android:layout_marginStart="5dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/cat_card"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:background="@color/white"
-            android:id="@+id/cat_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:padding="10dp"
-            android:gravity="center"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="@color/app_gray_color"
-            android:text=""/>
-
-    </androidx.cardview.widget.CardView>
+        android:background="@color/white"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text=""
+        android:textColor="@color/app_gray_color"
+        android:textSize="14sp"
+        android:includeFontPadding="false"
+        tools:ignore="RelativeOverlap"/>
+</androidx.cardview.widget.CardView>
