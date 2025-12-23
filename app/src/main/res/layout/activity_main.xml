@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_gray_bg"
+        android:background="@color/light_bg"
         android:fitsSystemWindows="false"
         android:orientation="vertical"
         tools:context=".view.DashBoardActivity">

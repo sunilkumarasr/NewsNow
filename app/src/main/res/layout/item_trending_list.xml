@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="330dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15sp"
+    android:layout_marginEnd="15sp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
     app:cardCornerRadius="10dp"
-    android:layout_margin="5dp"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
     app:cardBackgroundColor="@color/white"
     android:id="@+id/card"
     app:cardPreventCornerOverlap="false"
@@ -16,15 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="10dp"
         android:gravity="center">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="150dp">
         <ImageView
             android:id="@+id/trending_image"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,62 +56,68 @@
                 app:drawableLeftCompat="@drawable/play_small_icon"
                 tools:ignore="RelativeOverlap,SpUsage" />
         </RelativeLayout>
+
         <TextView
+            android:id="@+id/news_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/skip"
-            android:layout_marginTop="10dp"
-            android:id="@+id/news_title"
-            android:maxLines="2"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textSize="@dimen/item_title_text_size"
+            android:padding="8dp"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="bottom"
+            android:maxLines="2"
+            android:text="@string/title_content"
             android:textColor="@color/app_black_color"
-            tools:ignore="RelativeOverlap" />
+            android:textSize="14sp"
+            android:includeFontPadding="false"
+            tools:ignore="RelativeOverlap"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text=""
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:id="@+id/catagery"
                 android:maxLines="1"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="@dimen/item_view_trending_tag_text_size"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="11sp"
                 android:textColor="@color/app_gray_color"
-                tools:ignore="RelativeOverlap,SpUsage" />
+                tools:ignore="RelativeOverlap" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/time"
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
                 android:id="@+id/time"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:drawablePadding="5dp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="@dimen/item_view_trending_tag_text_size"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="11sp"
                 android:textColor="@color/app_gray_color"
                 app:drawableStartCompat="@drawable/clock_icon"
-                tools:ignore="RelativeOverlap,SpUsage" />
+                tools:ignore="RelativeOverlap" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/comments"
                 android:gravity="center_vertical"
                 android:layout_gravity="start"
                 android:drawablePadding="5dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:id="@+id/comments"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="@dimen/item_view_trending_tag_text_size"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="11sp"
                 android:textColor="@color/app_gray_color"
                 app:drawableStartCompat="@drawable/comments_icon"
-                tools:ignore="RelativeOverlap,SpUsage" />
+                tools:ignore="RelativeOverlap" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
