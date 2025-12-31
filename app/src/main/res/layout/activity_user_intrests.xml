@@ -14,13 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:fontFamily="@font/poppins_semi_bold"
+        android:fontFamily="@font/poppins_medium"
         android:gravity="start"
         android:includeFontPadding="false"
         android:paddingStart="25dp"
         android:text="@string/what_interest"
         android:textColor="@color/app_black_color"
-        android:textSize="22sp"
+        android:textSize="18sp"
         tools:ignore="RelativeOverlap,RtlSymmetry" />
 
     <TextView
@@ -28,13 +28,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/what_interest"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="start"
         android:includeFontPadding="false"
         android:paddingStart="25dp"
         android:text="@string/follow_the_topic"
         android:textColor="@color/app_gray_color"
-        android:textSize="13sp"
+        android:textSize="12sp"
         tools:ignore="RelativeOverlap,RtlSymmetry" />
 
     <androidx.core.widget.NestedScrollView
@@ -59,7 +59,7 @@
                 android:maxLines="8"
                 android:text="@string/recommendation"
                 android:textColor="@color/app_black_color"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 tools:ignore="RelativeOverlap" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -80,7 +80,7 @@
                 android:maxLines="8"
                 android:text="@string/all_topic"
                 android:textColor="@color/app_black_color"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 tools:ignore="RelativeOverlap" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -94,8 +94,8 @@
                 android:id="@+id/build"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/overlay_button"

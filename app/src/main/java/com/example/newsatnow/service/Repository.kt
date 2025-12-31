@@ -20,6 +20,8 @@ import com.example.example.MobileOTPRequestResponseModel
 import com.example.example.PodcastsData
 import com.example.example.PodcastsDataModel
 import com.example.example.TrendingDataModel
+import com.example.newsatnow.model.Citys.CitysDataModel
+import com.example.newsatnow.model.Citys.CitysList
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,6 +38,7 @@ object Repository {
     val serviceSetterGetterInterests = MutableLiveData<InterestsData?>()
     val loginData = MutableLiveData<LoginModel?>()
     val mobileOtpReq = MutableLiveData<MobileOTPRequestResponseModel?>()
+    val serviceCitysList = MutableLiveData<CitysDataModel?>()
 
     fun getServicesApiCall(): MutableLiveData<Data> {
         val call = RetrofitClient.apiInterface.getFeed()
@@ -239,4 +242,29 @@ object Repository {
 
         return mobileOtpReq as MutableLiveData<MobileOTPRequestResponseModel>
     }
+
+
+    fun getCitys(): MutableLiveData<CitysDataModel> {
+
+        val call = RetrofitClient.apiInterface.getCitys()
+
+        call.enqueue(object: Callback<CitysDataModel> {
+            override fun onFailure(call: Call<CitysDataModel>, t: Throwable) {
+                Log.v("DEBUG : ", t.message.toString())
+            }
+
+            override fun onResponse(
+                call: Call<CitysDataModel>,
+                response: Response<CitysDataModel>
+            ) {
+                Log.v("DEBUG : ", response.body().toString())
+                val data = response.body()
+                serviceCitysList.value = data
+            }
+        })
+
+        return serviceCitysList as MutableLiveData<CitysDataModel>
+    }
+
+
 }

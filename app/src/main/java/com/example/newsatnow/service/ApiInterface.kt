@@ -13,6 +13,7 @@ import com.example.example.MobileOTPRequestPostModel
 import com.example.example.MobileOTPRequestResponseModel
 import com.example.example.PodcastsDataModel
 import com.example.example.TrendingDataModel
+import com.example.newsatnow.model.Citys.CitysDataModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -50,4 +51,8 @@ interface ApiInterface {
 
     @POST("api/send-otp")
     fun sendOTP(@Body request: MobileOTPRequestPostModel) : Call<MobileOTPRequestResponseModel>
+
+    @GET("api/cities")
+    fun getCitys() : Call<CitysDataModel>
+
 }

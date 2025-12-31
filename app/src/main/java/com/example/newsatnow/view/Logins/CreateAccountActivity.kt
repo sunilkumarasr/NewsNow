@@ -3,8 +3,12 @@ package com.example.newsatnow.view.Logins
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.newsatnow.BaseActivity
 import com.example.newsatnow.R
 import com.example.newsatnow.databinding.ActivityCreateAccountBinding
@@ -21,15 +25,56 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 class CreateAccountActivity : BaseActivity() {
+
     var binding : ActivityCreateAccountBinding? = null
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code: Int = 123
     lateinit var firebaseAuth: FirebaseAuth
+
+    var passwordView: Boolean = false
+    var CpasswordView: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.enableEdgeToEdge(window)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        // Toggle password visibility
+        binding?.passwordToggle?.setOnClickListener {
+            binding?.etPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
+            if (passwordView){
+                passwordView = false
+                // Hide the password
+                binding?.etPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding?.passwordToggle?.setImageResource(com.example.newsatnow.R.drawable.c_eye)
+            }else{
+                passwordView = true
+                // Show the password
+                binding?.etPassword?.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding?.passwordToggle?.setImageResource(com.example.newsatnow.R.drawable.o_eye)
+            }
+        }
+
+        // Toggle C password visibility
+        binding?.CPasswordToggle?.setOnClickListener {
+            binding?.etCPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
+            if (CpasswordView){
+                CpasswordView = false
+                // Hide the password
+                binding?.etCPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding?.CPasswordToggle?.setImageResource(com.example.newsatnow.R.drawable.c_eye)
+            }else{
+                CpasswordView = true
+                // Show the password
+                binding?.etCPassword?.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding?.CPasswordToggle?.setImageResource(com.example.newsatnow.R.drawable.o_eye)
+            }
+        }
+
+
+        handleKeyboardInsets()
+
         FirebaseApp.initializeApp(this)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -53,6 +98,25 @@ class CreateAccountActivity : BaseActivity() {
         }
 
     }
+
+    private fun handleKeyboardInsets() {
+        binding?.main?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(it) { view, insets ->
+
+                val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+
+                view.setPadding(
+                    view.paddingLeft,
+                    view.paddingTop,
+                    view.paddingRight,
+                    imeInsets.bottom
+                )
+
+                insets
+            }
+        }
+    }
+
 
     private fun signInGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent

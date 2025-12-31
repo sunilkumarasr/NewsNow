@@ -11,65 +11,68 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
         android:alpha="0.1"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ContentDescription" />
 
 
     <RelativeLayout
+        android:id="@+id/trending_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/trending_layout">
-    <ImageView
-        android:id="@+id/trending_image"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription" />
+        android:layout_height="wrap_content">
+
         <ImageView
-            android:visibility="gone"
+            android:id="@+id/trending_image"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
             android:id="@+id/play_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/play_icon"
             android:layout_centerInParent="true"
+            android:src="@drawable/play_icon"
+            android:visibility="gone"
             tools:ignore="ContentDescription" />
     </RelativeLayout>
+
     <TextView
+        android:id="@+id/trending_news_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/trending_layout"
-        android:text=""
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/trending_news_title"
-        android:maxLines="2"
         android:ellipsize="end"
         android:fontFamily="@font/poppins_semi_bold"
-        android:textSize="18sp"
         android:gravity="start"
+        android:maxLines="2"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text=""
         android:textColor="@color/app_main_color"
+        android:textSize="18sp"
         tools:ignore="RelativeOverlap,RtlSymmetry" />
 
     <TextView
-        android:padding="20dp"
-        android:layout_below="@+id/trending_news_title"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/description"
+        android:layout_below="@+id/trending_news_title"
+        android:ellipsize="end"
         android:fontFamily="@font/poppins_regular"
-        android:textSize="16sp"
         android:gravity="start"
         android:maxLines="10"
-        android:ellipsize="end"
+        android:padding="20dp"
+        android:text=""
         android:textColor="@color/app_black_color"
+        android:textSize="16sp"
         tools:ignore="RelativeOverlap" />
 
 

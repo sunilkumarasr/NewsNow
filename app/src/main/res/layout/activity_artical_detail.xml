@@ -7,198 +7,235 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".view.Logins.CreateAccountActivity">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="450dp">
-    <ImageView
-        android:id="@+id/artical_image"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription" />
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="380dp">
+
         <ImageView
-            android:visibility="gone"
+            android:id="@+id/artical_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <ImageView
             android:id="@+id/play_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/play_icon"
             android:layout_centerInParent="true"
+            android:src="@drawable/play_icon"
+            android:visibility="gone"
             tools:ignore="ContentDescription" />
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/back_arrow_white"
-        tools:ignore="ContentDescription" />
-    <ImageView
-        android:id="@+id/save_button"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/saved_artical"
-        tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:tint="@color/app_main_color"
+            android:src="@drawable/back_arrow_white"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/save_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/saved_artical"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:animateLayoutChanges="true"
-        android:layout_alignParentBottom="true"
-        app:cardCornerRadius="70dp"
-        android:backgroundTintMode="screen"
-        app:cardBackgroundColor="@color/white"
+    <RelativeLayout
         android:id="@+id/card"
-        android:paddingBottom="60dp"
-        app:cardPreventCornerOverlap="false"
-        >
-        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-40dp"
+        android:background="@drawable/top_radusonly"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/artical_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/artical_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="22sp"
-                android:gravity="start"
-                android:textColor="@color/app_main_color"
-                tools:ignore="RelativeOverlap" />
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_horizontal"
+            android:maxLines="3"
+            android:text=""
+            android:textColor="@color/app_main_color"
+            android:textSize="18sp"
+            tools:ignore="RelativeOverlap" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rr"
+            android:layout_below="@+id/artical_title"
+            android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/artical_desription"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:gravity="start"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="16sp"
-                android:maxLines="8"
                 android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start"
                 android:textColor="@color/app_gray_color"
+                android:textSize="15sp"
                 tools:ignore="RelativeOverlap" />
+        </ScrollView>
+
+
+        <RelativeLayout
+            android:id="@+id/rr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/artical_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="@dimen/item_view_tag_text_size"
-                android:gravity="start"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="8dp"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="start"
+                android:text=""
                 android:textColor="@color/app_gray_color"
+                android:textSize="@dimen/item_view_tag_text_size"
                 app:drawableStartCompat="@drawable/clock_icon"
-                android:drawablePadding="5dp"
                 tools:ignore="RelativeOverlap,SpUsage" />
+
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
                 android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/like"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:padding="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="@dimen/item_view_tag_text_size"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_vertical"
-                    app:drawableStartCompat="@drawable/like"
-                    android:drawablePadding="5dp"
-                    android:textColor="@color/app_black_color"
-                    tools:ignore="RelativeOverlap,SpUsage" />
 
-                <TextView
-                    android:id="@+id/dislike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:padding="10dp"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="@dimen/item_view_tag_text_size"
-                    android:maxLines="12"
-                    android:ellipsize="end"
-                    android:textColor="@color/app_black_color"
-                    app:drawableStartCompat="@drawable/dislike"
-                    android:drawablePadding="5dp"
-                    tools:ignore="RelativeOverlap,SpUsage" />
-                <TextView
-                    android:id="@+id/comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:padding="10dp"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:textSize="@dimen/item_view_tag_text_size"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/app_black_color"
-                    app:drawableStartCompat="@drawable/comment"
-                    android:drawablePadding="5dp"
-                    tools:ignore="RelativeOverlap,SpUsage" />
                 <LinearLayout
-                    android:gravity="end"
-                    android:layout_gravity="end"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    tools:ignore="UselessLeaf">
+                    android:layout_gravity="center_vertical">
                     <ImageView
-                        android:padding="10dp"
-                        android:id="@+id/share"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/share"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="|"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="@dimen/item_view_tag_text_size"
-                        android:gravity="start"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/app_gray_color"
-                        tools:ignore="RelativeOverlap,SpUsage" />
-                    <ImageView
-                        android:padding="10dp"
-                        android:id="@+id/download"
+                        android:src="@drawable/like" />
+                    <TextView
+                        android:id="@+id/like"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/download"/>
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="1"
+                        tools:ignore="RelativeOverlap"
+                        android:textColor="@color/app_black_color"
+                        android:textSize="@dimen/item_view_tag_text_size"/>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/dislike" />
+                    <TextView
+                        android:id="@+id/dislike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="1"
+                        tools:ignore="RelativeOverlap"
+                        android:textColor="@color/app_black_color"
+                        android:textSize="@dimen/item_view_tag_text_size"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/comment" />
+                    <TextView
+                        android:id="@+id/comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="1"
+                        tools:ignore="RelativeOverlap"
+                        android:textColor="@color/app_black_color"
+                        android:textSize="@dimen/item_view_tag_text_size"/>
                 </LinearLayout>
 
 
-            </LinearLayout>
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessLeaf">
 
-    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/share"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/share" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:gravity="start"
+                        android:text="|"
+                        android:textColor="@color/app_gray_color"
+                        android:textSize="@dimen/item_view_tag_text_size"
+                        tools:ignore="RelativeOverlap,SpUsage" />
+
+                    <ImageView
+                        android:id="@+id/download"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/download" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 
     <ProgressBar
-        android:layout_centerInParent="true"
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </RelativeLayout>

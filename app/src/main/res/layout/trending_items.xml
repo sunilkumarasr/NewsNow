@@ -104,14 +104,14 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
+                    android:drawableTint="@color/text_header"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center_vertical"
                     android:text="@string/time"
                     android:singleLine="true"
-                    android:textColor="@color/interest_text"
+                    android:textColor="@color/text_header"
                     android:textSize="9sp"
                     app:drawableStartCompat="@drawable/clock_icon"
-                    app:drawableTint="@color/interest_text"
                     tools:ignore="RelativeOverlap,SpUsage" />
 
                 <TextView
@@ -125,10 +125,10 @@
                     android:gravity="center_vertical"
                     android:text="@string/comments"
                     android:singleLine="true"
-                    android:textColor="@color/interest_text"
+                    android:drawableTint="@color/text_header"
+                    android:textColor="@color/text_header"
                     android:textSize="9sp"
                     app:drawableStartCompat="@drawable/comments_icon"
-                    app:drawableTint="@color/interest_text"
                     tools:ignore="RelativeOverlap,SpUsage" />
             </LinearLayout>
         </LinearLayout>

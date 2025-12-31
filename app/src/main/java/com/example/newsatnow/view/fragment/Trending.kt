@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.newsatnow.adapter.OnboardingAdapter
 import com.example.newsatnow.adapter.TrendingOnboardingAdapter
 import com.example.newsatnow.databinding.FragmentTrendingBinding
 import com.example.newsatnow.viewModel.TrendingViewModel
@@ -33,8 +31,6 @@ class Trending : Fragment() {
                         }
                     }
                 }?.attach()
-
-
         })
         return binding?.root
     }

@@ -7,12 +7,12 @@
     android:background="?attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/relativeDigitalMagazine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -45,13 +45,14 @@
         android:layout_centerVertical="true"
         app:tint="@android:color/white" />
 </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/relativeVideos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -85,13 +86,14 @@
             android:layout_centerVertical="true"
             app:tint="@android:color/white" />
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/relativeViralNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -124,13 +126,14 @@
             android:layout_centerVertical="true"
             app:tint="@android:color/white" />
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/relativeNewsNowExclusive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -163,13 +166,14 @@
             android:layout_centerVertical="true"
             app:tint="@android:color/white" />
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/relativeContactUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -202,4 +206,5 @@
             android:layout_centerVertical="true"
             app:tint="@android:color/white" />
     </RelativeLayout>
+
 </LinearLayout>

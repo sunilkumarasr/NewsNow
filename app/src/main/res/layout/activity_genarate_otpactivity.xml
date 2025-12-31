@@ -1,188 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="32dp"
-    android:orientation="vertical"
-    android:paddingEnd="32dp"
-    android:background="@color/white">
+    android:background="@color/light_bg">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="UselessParent">
 
-    <ImageView
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:src="@drawable/map_icon"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="25dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/app_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/news_now"
+                        android:textColor="@color/text_header"
+                        android:includeFontPadding="false"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_hello_there"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/hello_there"
+                    android:textColor="@color/text_header"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="22sp"
+                    android:includeFontPadding="false" />
+
+                <TextView
+                    android:id="@+id/tv_get_started"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/get_started_with_nyour_account"
+                    android:textColor="#FF9800"
+                    android:textSize="21dp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:includeFontPadding="false" />
+
+                <LinearLayout
+                    android:id="@+id/layout_phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/editbox"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_get_started">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="8dp"
+                        android:text="@string/_91"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        app:drawableStartCompat="@drawable/ind_flag"
+                        tools:ignore="RtlSymmetry" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <EditText
+                        android:id="@+id/et_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="phone"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter phone number"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:paddingStart="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/app_black_color"
+                        android:textColorHint="@color/app_gray_color"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry,TextFields"
+                        android:includeFontPadding="false"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_verification_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/you_will_receive_an_sms_verification_that_may_apply_message_and_data_rates"
+                    android:textColor="@color/text_header"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:includeFontPadding="false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp">
+                    <TextView
+                        android:id="@+id/tv_terms_policy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="By signing in, you agree to the "
+                        android:textColor="@color/text_header"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:includeFontPadding="false"/>
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btn_get_started"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/overlay_button"
+                    android:text="@string/get_started"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="15sp"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:id="@+id/tv_sign_in_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="25dp"
+                    android:text="@string/don_t_have_account"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="15sp"
+                    android:includeFontPadding="false"
+                     />
+            </LinearLayout>
+        </ScrollView>
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/linearLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/map_icon"
-        android:scaleType="fitCenter"
-        tools:ignore="ContentDescription">
-
-    </ImageView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"
-        tools:ignore="UseCompoundDrawables">
-    <ImageView
-        android:id="@+id/iv_app_icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="64dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/app_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tv_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/news_now"
-        android:textColor="@color/app_black_color"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_app_icon"
-        app:layout_constraintStart_toStartOf="@+id/iv_app_icon"
-        app:layout_constraintTop_toBottomOf="@+id/iv_app_icon" />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/tv_hello_there"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_there"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_app_name" />
-
-    <TextView
-        android:id="@+id/tv_get_started"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/get_started_with_nyour_account"
-        android:textColor="#FF9800"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:lineSpacingExtra="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hello_there" />
-
-    <LinearLayout
-        android:id="@+id/layout_phone_input"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:background="@drawable/et_background"
-        app:layout_constraintTop_toBottomOf="@+id/tv_get_started"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_91"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:paddingEnd="8dp"
-            app:drawableStartCompat="@drawable/ind_flag"
-            tools:ignore="RtlSymmetry" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@android:color/darker_gray" />
-
-        <EditText
-            android:id="@+id/et_phone_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:hint="@string/mobile_number"
-            android:inputType="number"
-            android:maxLength="10"
-            android:paddingStart="8dp"
-            android:autofillHints="phone"
-            android:textColor="@color/app_black_color"
-            android:textSize="18sp"
-            android:singleLine="true"
-            android:textColorHint="@color/app_gray_color"
-            tools:ignore="RtlSymmetry,TextFields" />
-
+        android:gravity="center">
+        <include layout="@layout/loadingscreen" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_verification_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/you_will_receive_an_sms_verification_that_may_apply_message_and_data_rates"
-        android:textSize="14sp"
-        android:textColor="@color/app_gray_color"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_phone_input" />
-
-    <TextView
-        android:id="@+id/tv_terms_policy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/by_signing_in_you_agree_to_the_terms_and_policy"
-        android:textSize="14sp"
-        android:textColor="@color/app_gray_color"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_message" />
-
-    <Button
-        android:id="@+id/btn_get_started"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="@string/get_started"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:background="@drawable/overlay_button"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_terms_policy"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_sign_in_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/already_have_account"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_get_started" />
-    </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_main_color">
-
     <ScrollView
         android:nestedScrollingEnabled="false"
         android:layout_width="match_parent"
@@ -17,19 +16,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="40dp"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/back_arrow_white"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="15sp"
+            android:src="@drawable/back_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/back_arrow_white" />
+            tools:src="@drawable/back_arrow" />
 
         <TextView
             android:id="@+id/tvBack"
@@ -42,40 +40,45 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/btnBack"
             app:layout_constraintStart_toEndOf="@id/btnBack"
-            app:layout_constraintTop_toTopOf="@id/btnBack" />
+            app:layout_constraintTop_toTopOf="@id/btnBack"
+            android:includeFontPadding="false"/>
 
         <EditText
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_search_field"
             android:drawableEnd="@android:drawable/ic_menu_search"
             android:drawableTint="#A0A0A0"
             android:hint="Search Here"
+            android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"
             android:paddingHorizontal="16dp"
-            android:textColor="@color/app_black_color"
+            android:textColor="@color/text_header"
             android:textColorHint="@color/app_gray_color"
-            app:layout_constraintTop_toBottomOf="@id/tvBack" />
+            app:layout_constraintTop_toBottomOf="@id/tvBack"
+            android:includeFontPadding="false"/>
 
         <TextView
             android:id="@+id/tvKeywords"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:text="Search Kewords Ex : Modi, Politics, healt, Movies...."
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/etSearch"
-            app:layout_constraintTop_toBottomOf="@id/etSearch" />
+            app:layout_constraintTop_toBottomOf="@id/etSearch"
+            android:includeFontPadding="false"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15sp"
             android:background="@drawable/bg_white_top_rounded"
             android:paddingBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,10 +103,11 @@
                 android:layout_marginStart="16dp"
                 android:text="Select Stories Before"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/app_gray_color"
+                android:textColor="@color/text_header"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/imgHourglass"
-                app:layout_constraintTop_toTopOf="@id/imgHourglass" />
+                app:layout_constraintTop_toTopOf="@id/imgHourglass"
+                android:includeFontPadding="false"/>
 
             <TextView
                 android:id="@+id/tvBetweenHours"
@@ -113,57 +117,127 @@
                 android:text="Between Last 24 Hours"
                 android:textColor="@color/app_main_color"
                 android:textSize="16sp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:fontFamily="@font/poppins_medium"
                 app:layout_constraintStart_toEndOf="@id/imgHourglass"
-                app:layout_constraintTop_toBottomOf="@id/tvSelectStories" />
+                app:layout_constraintTop_toBottomOf="@id/tvSelectStories"
+                android:includeFontPadding="false"/>
 
-            <GridLayout
-                android:id="@+id/gridButtons"
+            <LinearLayout
+                android:id="@+id/groupLinear1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp"
-                android:columnCount="4"
-                android:rowCount="2"
                 android:useDefaultMargins="true"
+                android:paddingHorizontal="30dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintTop_toBottomOf="@id/tvBetweenHours">
-
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="1 hour" />
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="2 hour" />
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="4 hour" />
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="8 hour" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/groupLinear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:useDefaultMargins="true"
+                android:paddingHorizontal="30dp"
+                app:layout_constraintTop_toBottomOf="@id/groupLinear1">
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="12 hour" />
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="16 hour" />
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="20 hour" />
                 <androidx.appcompat.widget.AppCompatButton
-                    style="@style/OrangeButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:background="@drawable/bg_gray_button"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="24 hour" />
-            </GridLayout>
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/imgCatIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/cate_icon"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gridButtons"
+                app:layout_constraintTop_toBottomOf="@id/groupLinear2"
                 app:tint="@color/app_main_color" />
 
             <TextView
@@ -174,9 +248,10 @@
                 android:text="Select your"
                 android:textSize="12sp"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/app_gray_color"
+                android:textColor="@color/text_header"
                 app:layout_constraintStart_toEndOf="@id/imgCatIcon"
-                app:layout_constraintTop_toTopOf="@id/imgCatIcon" />
+                app:layout_constraintTop_toTopOf="@id/imgCatIcon"
+                android:includeFontPadding="false"/>
 
             <TextView
                 android:id="@+id/tvCategoriesTitle"
@@ -186,9 +261,10 @@
                 android:text="Categories"
                 android:textColor="@color/app_main_color"
                 android:textSize="16sp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:fontFamily="@font/poppins_medium"
                 app:layout_constraintStart_toEndOf="@id/imgCatIcon"
-                app:layout_constraintTop_toBottomOf="@id/tvSelectCat" />
+                app:layout_constraintTop_toBottomOf="@id/tvSelectCat"
+                android:includeFontPadding="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -216,16 +292,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Videos"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -246,16 +322,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Magazine"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -276,16 +352,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Viral News"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -306,16 +382,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Trending"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -335,16 +411,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Wild Life"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -364,16 +440,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Sports"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -393,16 +469,16 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="Isro"
-                        android:textColor="@color/app_gray_color"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_header"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:includeFontPadding="false"/>
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="15sp"
                         android:src="@drawable/next"
-                        app:tint="@color/app_gray_color" />
+                        app:tint="@color/text_header" />
                 </LinearLayout>
 
             </LinearLayout>

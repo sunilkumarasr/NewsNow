@@ -18,10 +18,12 @@ import com.example.newsatnow.view.VideoPlayActivity
 import com.example.newsatnow.view.WebviewActivity
 import com.example.newsatnow.view.YoutubeVideoPlayActivity
 
-class TrendingOnboardingAdapter(trendingArticles: ArrayList<TrendingArticles>) : RecyclerView.Adapter<TrendingOnboardingAdapter.ViewHolder?>() {
+class TrendingOnboardingAdapter(trendingArticles: ArrayList<TrendingArticles>) :
+    RecyclerView.Adapter<TrendingOnboardingAdapter.ViewHolder?>() {
     val trendingList = trendingArticles
 
-    class ViewHolder(val binding: ItemTrendingSlidesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding: ItemTrendingSlidesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
 
@@ -30,7 +32,7 @@ class TrendingOnboardingAdapter(trendingArticles: ArrayList<TrendingArticles>) :
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val context = holder.itemView.context
+        val context = holder.itemView.context
         Glide
             .with(context)
             .load(trendingList[position].image)
@@ -43,10 +45,9 @@ class TrendingOnboardingAdapter(trendingArticles: ArrayList<TrendingArticles>) :
             .centerCrop()
             .placeholder(R.drawable.loading)
             .into(holder.binding.trendingImageBackground)
-            holder.binding.description.text = Html.fromHtml(trendingList[position].summary)
-            holder.binding.trendingNewsTitle.text = Html.fromHtml(trendingList[position].title)
-            holder.binding.trendingNewsTitle.setOnClickListener {
-
+        holder.binding.description.text = Html.fromHtml(trendingList[position].summary)
+        holder.binding.trendingNewsTitle.text = Html.fromHtml(trendingList[position].title)
+        holder.binding.trendingNewsTitle.setOnClickListener {
             val intent = Intent(context, WebviewActivity::class.java)
             intent.putExtra("source", trendingList[position].source)
             context.startActivity(intent)
@@ -57,21 +58,26 @@ class TrendingOnboardingAdapter(trendingArticles: ArrayList<TrendingArticles>) :
             holder.binding.playIcon.visibility = View.GONE
         }
         holder.binding.playIcon.setOnClickListener {
-            Log.d("Video_url",trendingList[position].video!!)
+            Log.d("Video_url", trendingList[position].video!!)
             if (trendingList[position].video!!.contains("youtube.com/watch", ignoreCase = true)) {
                 val parts = trendingList[position].video!!.split("=")
                 val intent = Intent(context, YoutubeVideoPlayActivity::class.java)
-                intent.putExtra("video_url",parts[1])
+                intent.putExtra("video_url", parts[1])
                 context.startActivity(intent)
-            }
-            else if (trendingList[position].video!!.contains("youtube.com/embed", ignoreCase = true)){
+            } else if (trendingList[position].video!!.contains(
+                    "youtube.com/embed",
+                    ignoreCase = true
+                )
+            ) {
                 val intent = Intent(context, YoutubeVideoPlayActivity::class.java)
-                intent.putExtra("video_url",trendingList[position].video!!.replace("https://www.youtube.com/embed/",""))
+                intent.putExtra(
+                    "video_url",
+                    trendingList[position].video!!.replace("https://www.youtube.com/embed/", "")
+                )
                 context.startActivity(intent)
-            }
-            else{
+            } else {
                 val intent = Intent(context, VideoPlayActivity::class.java)
-                intent.putExtra("video_url",trendingList[position].video!!)
+                intent.putExtra("video_url", trendingList[position].video!!)
                 context.startActivity(intent)
             }
         }

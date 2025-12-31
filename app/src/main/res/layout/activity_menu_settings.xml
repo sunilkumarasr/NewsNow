@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:fillViewport="true">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,9 +13,10 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="15sp"
             android:src="@drawable/back_arrow"
             app:tint="@color/app_main_color"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,27 +28,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textColor="@color/app_gray_color"
-            android:textSize="20sp"
+            android:textColor="@color/text_header"
+            android:textSize="17sp"
             android:fontFamily="@font/poppins_regular"
             app:layout_constraintBottom_toBottomOf="@id/btnBack"
             app:layout_constraintStart_toEndOf="@id/btnBack"
-            app:layout_constraintTop_toTopOf="@id/btnBack" />
+            app:layout_constraintTop_toTopOf="@id/btnBack"
+            android:includeFontPadding="false" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardParental"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/overlay_button"
-            android:padding="20dp"
+            android:padding="10dp"
             app:layout_constraintTop_toBottomOf="@id/btnBack">
 
             <ImageView
                 android:id="@+id/iconFace"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/parental_control"
                 app:tint="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,23 +65,27 @@
                 android:layout_marginEnd="8dp"
                 android:text="Parental Control"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:textSize="17sp"
+                android:singleLine="true"
+                android:fontFamily="@font/poppins_medium"
                 app:layout_constraintEnd_toStartOf="@id/switchParental"
                 app:layout_constraintStart_toEndOf="@id/iconFace"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:includeFontPadding="false" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Enabling these parental controls will completely block abusive comments from view."
                 android:textColor="@color/white"
-                android:textSize="10sp"
-                android:fontFamily="@font/poppins_regular"
+                android:textSize="9sp"
                 app:layout_constraintEnd_toEndOf="@id/tvParentalTitle"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/tvParentalTitle"
-                app:layout_constraintTop_toBottomOf="@id/tvParentalTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvParentalTitle"
+                android:includeFontPadding="false" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchParental"
@@ -99,7 +104,8 @@
             android:id="@+id/rowQuickActions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="12dp"
             android:orientation="horizontal"
             android:weightSum="2"
             app:layout_constraintTop_toBottomOf="@id/cardParental">
@@ -111,18 +117,19 @@
                 android:gravity="center_vertical"
                 android:paddingStart="32dp">
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/saved_icon"
                     app:tint="@color/app_main_color"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bookmarks"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/app_gray_color"
-                    android:layout_marginStart="12dp"/>
+                    android:textColor="@color/text_header"
+                    android:layout_marginStart="12dp"
+                    android:includeFontPadding="false" />
             </LinearLayout>
 
             <LinearLayout
@@ -132,18 +139,19 @@
                 android:gravity="center_vertical"
                 android:paddingStart="16dp">
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/clear_cache"
                     app:tint="@color/app_main_color"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Clear Cache"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/app_gray_color"
-                    android:layout_marginStart="12dp"/>
+                    android:textColor="@color/text_header"
+                    android:layout_marginStart="12dp"
+                    android:includeFontPadding="false" />
             </LinearLayout>
         </LinearLayout>
 
@@ -152,7 +160,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="24dp"
             android:paddingHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/rowQuickActions">
 
@@ -166,15 +173,18 @@
                     android:layout_height="28dp"
                     android:src="@drawable/notification"
                     app:tint="@color/app_main_color"/>
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="Notifications"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/app_gray_color"
-                    android:textSize="16sp"
-                    android:layout_marginStart="16dp"/>
+                    android:includeFontPadding="false"
+                    android:text="Notifications"
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp" />
+
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -199,9 +209,10 @@
                     android:layout_weight="1"
                     android:text="Videos Autoplay"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/app_gray_color"
-                    android:textSize="16sp"
-                    android:layout_marginStart="16dp"/>
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:layout_marginStart="16dp"
+                    android:includeFontPadding="false" />
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -226,9 +237,10 @@
                     android:layout_weight="1"
                     android:text="Night Mode"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/app_gray_color"
-                    android:textSize="16sp"
-                    android:layout_marginStart="16dp"/>
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:layout_marginStart="16dp"
+                    android:includeFontPadding="false" />
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -253,9 +265,10 @@
                     android:layout_weight="1"
                     android:text="Local Stories"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/app_gray_color"
-                    android:textSize="16sp"
-                    android:layout_marginStart="16dp"/>
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:layout_marginStart="16dp"
+                    android:includeFontPadding="false" />
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -271,36 +284,126 @@
             android:layout_height="wrap_content"
             android:text="Contact Us"
             android:textSize="18sp"
-            android:fontFamily="@font/poppins_semi_bold"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/app_main_color"
-            android:layout_marginTop="24dp"
+            android:paddingVertical="12dp"
             android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutToggles"/>
+            app:layout_constraintTop_toBottomOf="@id/layoutToggles"
+            android:includeFontPadding="false" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="32dp"
-            android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@id/tvContactHeader">
 
-            <TextView
-                style="@style/SettingsLink"
-                android:text="About Us" />
-            <TextView
-                style="@style/SettingsLink"
-                android:text="Reach Us" />
-            <TextView
-                style="@style/SettingsLink"
-                android:text="Feedback" />
-            <TextView
-                style="@style/SettingsLink"
-                android:text="Terms &amp; Conditions" />
-            <TextView
-                style="@style/SettingsLink"
-                android:text="Privacy Policy" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:gravity="center_vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:fontFamily="@font/poppins_regular"
+                   android:textColor="@color/text_header"
+                   android:textSize="15sp"
+                   android:text="About Us"
+                   android:includeFontPadding="false" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15sp"
+                    android:src="@drawable/next"
+                    app:tint="@color/text_header"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:text="Reach Us"
+                    android:includeFontPadding="false" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15sp"
+                    android:src="@drawable/next"
+                    app:tint="@color/text_header"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:text="Feedback"
+                    android:includeFontPadding="false" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15sp"
+                    android:src="@drawable/next"
+                    app:tint="@color/text_header"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:text="Terms &amp; Conditions"
+                    android:includeFontPadding="false" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15sp"
+                    android:src="@drawable/next"
+                    app:tint="@color/text_header"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/text_header"
+                    android:textSize="15sp"
+                    android:text="Privacy Policy"
+                    android:includeFontPadding="false" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15sp"
+                    android:src="@drawable/next"
+                    app:tint="@color/text_header"/>
+            </LinearLayout>
+
 
         </LinearLayout>
 

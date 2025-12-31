@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.identity.Identity
 
 @Suppress("DEPRECATION")
 class MobileOTPRequestActivity : BaseActivity() {
+
     var binding : ActivityMobileOtprequestBinding? = null
     private val REQ_PHONE_NUMBER_HINT = 1001
 

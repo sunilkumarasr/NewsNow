@@ -8,12 +8,14 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:clickable="true"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground"
+    android:id="@+id/linearProfileEdit">
 
     <ImageView
         android:layout_width="27dp"
         android:layout_height="27dp"
-        android:src="@drawable/profile"
+        android:src="@drawable/profile_image_background"
+        android:tint="@color/white"
         android:layout_marginEnd="12dp" />
 
     <LinearLayout
@@ -26,8 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CPIXEL STUDIOS"
-            android:textStyle="bold"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@android:color/white"
             android:includeFontPadding="false"/>
@@ -45,7 +46,6 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/profile_edit"
         android:layout_width="17sp"
         android:layout_height="17sp"
         android:src="@drawable/pencil"

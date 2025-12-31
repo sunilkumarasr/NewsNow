@@ -23,6 +23,7 @@ class SplashscreenActivity : BaseActivity() {
         redirectToMainScreen()
 
     }
+
     private fun redirectToMainScreen() {
         LogoAnimation()
 
@@ -37,7 +38,7 @@ class SplashscreenActivity : BaseActivity() {
                         DashBoardActivity::class.java
                     ).apply { Intent.FLAG_ACTIVITY_SINGLE_TOP })
                 finish()
-            }else{
+            } else {
                 startActivity(
                     Intent(
                         this,
@@ -52,24 +53,24 @@ class SplashscreenActivity : BaseActivity() {
 
     private fun LogoAnimation() {
         val splashLogo: ImageView = findViewById(R.id.imgLogo)
-        // Create ObjectAnimators for the different effects
+
+        splashLogo.pivotX = splashLogo.width / 2f
+        splashLogo.pivotY = splashLogo.height / 2f
+
         val scaleX = ObjectAnimator.ofFloat(splashLogo, "scaleX", 0f, 1f)
         val scaleY = ObjectAnimator.ofFloat(splashLogo, "scaleY", 0f, 1f)
         val fadeIn = ObjectAnimator.ofFloat(splashLogo, "alpha", 0f, 1f)
-        val moveUp = ObjectAnimator.ofFloat(splashLogo, "translationY", 1000f, 0f) // Move logo up
+        val moveUp = ObjectAnimator.ofFloat(splashLogo, "translationY", 50f, 0f) // smaller offset
 
-        // Set durations for animations
         scaleX.duration = 1000
         scaleY.duration = 1000
         fadeIn.duration = 1000
         moveUp.duration = 1000
 
-        // Combine animations in AnimatorSet to run together
         val animatorSet = AnimatorSet()
         animatorSet.playTogether(scaleX, scaleY, fadeIn, moveUp)
-
-        // Start animation
         animatorSet.start()
+
     }
 
 

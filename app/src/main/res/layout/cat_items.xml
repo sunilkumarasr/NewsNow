@@ -21,7 +21,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text=""
-        android:textColor="@color/app_gray_color"
+        android:textColor="@color/text_header"
         android:textSize="14sp"
         android:includeFontPadding="false"
         tools:ignore="RelativeOverlap"/>

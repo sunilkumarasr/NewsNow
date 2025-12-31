@@ -1,18 +1,16 @@
 package com.example.newsatnow.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsatnow.BaseActivity
@@ -20,6 +18,10 @@ import com.example.newsatnow.Config.Preferences
 import com.example.newsatnow.R
 import com.example.newsatnow.adapter.NavCatAdapter
 import com.example.newsatnow.databinding.ActivityMainBinding
+import com.example.newsatnow.view.Activitys.Menu.ManualLocationActivity
+import com.example.newsatnow.view.Activitys.Menu.MenuSettingsActivity
+import com.example.newsatnow.view.Activitys.Menu.ProfileActivity
+import com.example.newsatnow.view.Activitys.MenuSearchActivity
 import com.example.newsatnow.view.fragment.Home
 import com.example.newsatnow.view.fragment.Live
 import com.example.newsatnow.view.fragment.Podcasts
@@ -68,24 +70,38 @@ class DashBoardActivity : BaseActivity() {
             true
         }
         binding?.navView?.setItemIconSize(getResources().getDimensionPixelSize(R.dimen.menu_icon_size))
-        val header = binding?.navView?.getHeaderView(0)
-        val tv_account_label: TextView? = header?.findViewById<TextView>(R.id.tv_account_label)
-        val profile_edit: ImageView? = header?.findViewById<ImageView>(R.id.profile_edit)
+        val header = binding?.navView
         val btn_settings: ImageView? = header?.findViewById<ImageView>(R.id.btn_settings)
         val btn_search: ImageView? = header?.findViewById<ImageView>(R.id.btn_search)
-        profile_edit?.setOnClickListener {
-            val intent = android.content.Intent(this, Profile::class.java)
-            startActivity(intent)
-            binding?.drawerLayout?.closeDrawer(GravityCompat.END)
-        }
+        val linearProfileEdit: LinearLayout? = header?.findViewById<LinearLayout>(R.id.linearProfileEdit)
+        val linearLocation: LinearLayout? = header?.findViewById<LinearLayout>(R.id.linearLocation)
+        val linearLanguage: LinearLayout? = header?.findViewById<LinearLayout>(R.id.linearLanguage)
+        val relativeFactCheck: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeFactCheck)
+        val relativeRefer: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeRefer)
+        val relativeDigitalMagazine: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeDigitalMagazine)
+        val relativeVideos: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeVideos)
+        val relativeViralNews: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeViralNews)
+        val relativeNewsNowExclusive: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeNewsNowExclusive)
+        val relativeContactUs: RelativeLayout? = header?.findViewById<RelativeLayout>(R.id.relativeContactUs)
+
         btn_settings?.setOnClickListener {
-            val intent = android.content.Intent(this, MenuSettingsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MenuSettingsActivity::class.java))
             binding?.drawerLayout?.closeDrawer(GravityCompat.END)
         }
         btn_search?.setOnClickListener {
-            val intent = android.content.Intent(this, MenuSearchActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MenuSearchActivity::class.java))
+            binding?.drawerLayout?.closeDrawer(GravityCompat.END)
+        }
+        linearProfileEdit?.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+            binding?.drawerLayout?.closeDrawer(GravityCompat.END)
+        }
+        linearLocation?.setOnClickListener {
+            startActivity(Intent(this, ManualLocationActivity::class.java))
+            binding?.drawerLayout?.closeDrawer(GravityCompat.END)
+        }
+        linearLanguage?.setOnClickListener {
+
             binding?.drawerLayout?.closeDrawer(GravityCompat.END)
         }
 
@@ -99,7 +115,6 @@ class DashBoardActivity : BaseActivity() {
         userIntrestsViewModel.getInterests()!!.observe(this) { serviceSetterGetter ->
             recyclerView.adapter = NavCatAdapter(serviceSetterGetter.all)
         }
-
 
 
         binding?.menuIcon?.setOnClickListener {

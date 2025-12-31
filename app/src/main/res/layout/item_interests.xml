@@ -27,8 +27,8 @@
 
             <ImageView
                 android:id="@+id/interest_image"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/sports_icon"
                 app:tint="@color/app_cat_color"

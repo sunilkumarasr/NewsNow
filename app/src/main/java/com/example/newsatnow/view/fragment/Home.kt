@@ -2,6 +2,8 @@ package com.example.newsatnow.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +28,10 @@ class Home : Fragment() {
    var binding : FragmentHomeBinding? = null
     lateinit var mainActivityViewModel: MainFeedViewModel
 
+    lateinit var futuredAdapter: FuturedAdapter
+    lateinit var trendingAdapter: TrendingAdapter
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +43,8 @@ class Home : Fragment() {
         mainActivityViewModel = ViewModelProvider(this)[MainFeedViewModel::class.java]
         mainActivityViewModel.getFeed()!!.observe(viewLifecycleOwner, Observer { serviceSetterGetter ->
             val catAdapter = CatAdapter(serviceSetterGetter.categories)
-            val futuredAdapter = FuturedAdapter(serviceSetterGetter.featuredArticles)
-            val trendingAdapter = TrendingAdapter(serviceSetterGetter.trendingArticles)
+            futuredAdapter = FuturedAdapter(serviceSetterGetter.featuredArticles)
+            trendingAdapter = TrendingAdapter(serviceSetterGetter.trendingArticles)
             binding?.recycler?.setAdapter(catAdapter)
             binding?.recyclerFutured?.setAdapter(futuredAdapter)
             binding?.recyclerTrending?.setAdapter(trendingAdapter)
@@ -60,6 +66,21 @@ class Home : Fragment() {
         binding?.futuredViewMore?.setOnClickListener {
             startActivity(Intent(context, FeaturedActivity::class.java))
         }
+
+
+        binding?.searchView?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                futuredAdapter.filter.filter(s)
+                trendingAdapter.filter.filter(s)
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+
+
         return binding?.root
     }
 

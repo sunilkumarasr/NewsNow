@@ -1,6 +1,5 @@
 package com.example.newsatnow.view.Logins
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
@@ -9,7 +8,10 @@ import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
+import androidx.core.R
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.example.LoginPostData
@@ -30,6 +32,9 @@ class LoginActivity : BaseActivity() {
         WindowCompat.enableEdgeToEdge(window)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        handleKeyboardInsets()
+
         loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         val signUp = "Don\'t have an account? <font color=\"#f47e24\">Sign Up</font>"
         binding?.signup?.text = Html.fromHtml(signUp, Html.FROM_HTML_MODE_LEGACY)
@@ -42,21 +47,22 @@ class LoginActivity : BaseActivity() {
         }
 
         // Toggle password visibility
-//        binding?.passwordToggle?.setOnClickListener {
-//            binding?.etPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
-//            if (passwordView){
-//                passwordView = false
-//                // Hide the password
-//                binding?.etPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
-//                binding?.passwordToggle?.setImageResource(R.drawable.close_eye)
-//            }else{
-//                passwordView = true
-//                // Show the password
-//                binding?.etPassword?.transformationMethod = HideReturnsTransformationMethod.getInstance()
-//                binding?.passwordToggle?.setImageResource(R.drawable.open_eye)
-//            }
-//
-//        }
+        binding?.passwordToggle?.setOnClickListener {
+            binding?.etPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
+            if (passwordView){
+                passwordView = false
+                // Hide the password
+                binding?.etPassword?.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding?.passwordToggle?.setImageResource(com.example.newsatnow.R.drawable.c_eye)
+            }else{
+                passwordView = true
+                // Show the password
+                binding?.etPassword?.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding?.passwordToggle?.setImageResource(com.example.newsatnow.R.drawable.o_eye)
+            }
+
+        }
+
 
         binding?.forgotPassword?.setOnClickListener {
             val animations = ViewController.animation()
@@ -96,6 +102,7 @@ class LoginActivity : BaseActivity() {
                         } else {
                             val token = serviceSetterGetter.token
                             if (token != null) {
+
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.name,
                                     serviceSetterGetter.user?.name.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.email,
@@ -117,6 +124,26 @@ class LoginActivity : BaseActivity() {
         }
 
     }
+
+
+    private fun handleKeyboardInsets() {
+        binding?.main?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(it) { view, insets ->
+
+                val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+
+                view.setPadding(
+                    view.paddingLeft,
+                    view.paddingTop,
+                    view.paddingRight,
+                    imeInsets.bottom
+                )
+
+                insets
+            }
+        }
+    }
+
 
 
 }

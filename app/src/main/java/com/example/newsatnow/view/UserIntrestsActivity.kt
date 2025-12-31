@@ -3,6 +3,8 @@ package com.example.newsatnow.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,6 +23,10 @@ class UserIntrestsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserIntrestsBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        window.statusBarColor = ContextCompat.getColor(this, com.example.newsatnow.R.color.light_gray_bg)
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightStatusBars = true
+
         userIntrestsViewModel = ViewModelProvider(this)[InterestViewModel::class.java]
         val layoutManager = GridLayoutManager(this, 4)
         val layoutManagerRecommand = GridLayoutManager(this, 4)

@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -17,68 +19,93 @@ import com.example.newsatnow.view.VideoPlayActivity
 import com.example.newsatnow.view.YoutubeVideoPlayActivity
 
 
-class TrendingAdapter(// List that holds every item to be displayed in RecyclerView
-    var texts: ArrayList<TrendingArticles>
-) : RecyclerView.Adapter<TrendingAdapter.ViewHolder?>() {
-    // This function inflated the list_item and fits it into the Recycler View Widget
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
+class TrendingAdapter(
+    private val originalList: ArrayList<TrendingArticles>
+) : RecyclerView.Adapter<TrendingAdapter.ViewHolder>(), Filterable {
+
+    private var filteredList = ArrayList<TrendingArticles>(originalList)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         TrendingItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    // This funciton binds the Content with the components of the Recycler View.
-    override fun onBindViewHolder(holder: TrendingAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val context = holder.itemView.context
-        holder.binding.newsTitle.text = texts[position].title
-        holder.binding.catagery.text = texts[position].category?.name
-        Glide
-            .with(context)
-            .load(texts[position].image)
+        val item = filteredList[position]
+
+        holder.binding.newsTitle.text = item.title
+        holder.binding.catagery.text = item.category?.name
+
+        Glide.with(context)
+            .load(item.image)
             .transform(CenterCrop(), RoundedCorners(10))
             .placeholder(R.drawable.loading)
             .into(holder.binding.trendingImage)
-        holder.binding.time.text = texts[position].updatedAt
-        holder.binding.comments.text = buildString {
-            append(texts[position].commentsCount.toString())
-            append(" Comments")
-        }
-        if (texts[position].video != null) {
-            holder.binding.videoPlay.visibility = View.VISIBLE
-        } else {
-            holder.binding.videoPlay.visibility = View.GONE
-        }
+
+        holder.binding.time.text = item.updatedAt
+        holder.binding.comments.text = "${item.commentsCount} Comments"
+
+        holder.binding.videoPlay.visibility =
+            if (item.video != null) View.VISIBLE else View.GONE
+
         holder.binding.videoPlay.setOnClickListener {
-            Log.d("Video_url",texts[position].video!!)
-            if (texts[position].video!!.contains("youtube.com/watch", ignoreCase = true)) {
-                val parts = texts[position].video!!.split("=")
-                val intent = Intent(context, YoutubeVideoPlayActivity::class.java)
-                intent.putExtra("video_url",parts[1])
-                context.startActivity(intent)
-            }
-            else if (texts[position].video!!.contains("youtube.com/embed", ignoreCase = true)){
-                val intent = Intent(context, YoutubeVideoPlayActivity::class.java)
-                intent.putExtra("video_url",texts[position].video!!.replace("https://www.youtube.com/embed/",""))
-                context.startActivity(intent)
-            }
-            else{
-                val intent = Intent(context, VideoPlayActivity::class.java)
-                intent.putExtra("video_url",texts[position].video!!)
-                context.startActivity(intent)
+            Log.d("Video_url", item.video!!)
+            if (item.video!!.contains("youtube.com/watch", true)) {
+                val parts = item.video!!.split("=")
+                context.startActivity(
+                    Intent(context, YoutubeVideoPlayActivity::class.java)
+                        .putExtra("video_url", parts[1])
+                )
+            } else if (item.video!!.contains("youtube.com/embed", true)) {
+                context.startActivity(
+                    Intent(context, YoutubeVideoPlayActivity::class.java)
+                        .putExtra(
+                            "video_url",
+                            item.video!!.replace("https://www.youtube.com/embed/", "")
+                        )
+                )
+            } else {
+                context.startActivity(
+                    Intent(context, VideoPlayActivity::class.java)
+                        .putExtra("video_url", item.video!!)
+                )
             }
         }
+
         holder.binding.card.setOnClickListener {
-            val intent = Intent(context, ArticalDetailActivity::class.java)
-            intent.putExtra("id", texts[position].id.toString())
-            context.startActivity(intent)
+            context.startActivity(
+                Intent(context, ArticalDetailActivity::class.java)
+                    .putExtra("id", item.id.toString())
+            )
         }
-
     }
 
-    override fun getItemCount(): Int {
-        return texts.size
+    override fun getItemCount(): Int = filteredList.size
+
+    // 🔍 SEARCH FILTER
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val query = constraint.toString().lowercase().trim()
+                filteredList = if (query.isEmpty()) {
+                    ArrayList(originalList)
+                } else {
+                    originalList.filter {
+                        it.title?.lowercase()?.contains(query) == true ||
+                                it.category?.name?.lowercase()?.contains(query) == true
+                    } as ArrayList<TrendingArticles>
+                }
+
+                return FilterResults().apply { values = filteredList }
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredList = results?.values as ArrayList<TrendingArticles>
+                notifyDataSetChanged()
+            }
+        }
     }
 
-    class ViewHolder(val binding: TrendingItemsBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
-
+    class ViewHolder(val binding: TrendingItemsBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

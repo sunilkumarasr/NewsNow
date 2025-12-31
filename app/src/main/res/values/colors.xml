@@ -22,4 +22,5 @@
     <color name="interest_text">#6d6c6c</color>
     <color name="light_gray_bg">#f2f2f2</color>
     <color name="light_bg">#fcfcfc</color>
+    <color name="text_header">#9598a4</color>
 </resources>

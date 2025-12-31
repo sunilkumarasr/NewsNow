@@ -42,6 +42,7 @@
                     android:textColor="@color/app_gray_color"
                     android:textColorHint="@color/app_gray_color"
                     android:textSize="15sp"
+                    android:background="@null"
                     tools:ignore="TextFields" />
             </LinearLayout>
 

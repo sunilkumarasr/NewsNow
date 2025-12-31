@@ -7,11 +7,11 @@
     android:background="?attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/relativeFactCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -51,12 +51,12 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeRefer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground">
 
         <ImageView
@@ -94,4 +94,5 @@
             android:includeFontPadding="false"/>
 
     </RelativeLayout>
+
 </LinearLayout>
