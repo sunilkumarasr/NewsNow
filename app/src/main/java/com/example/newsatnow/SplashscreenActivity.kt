@@ -7,7 +7,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.core.view.WindowCompat
 import com.example.newsatnow.Config.Preferences
 import com.example.newsatnow.view.DashBoardActivity
@@ -28,7 +27,6 @@ class SplashscreenActivity : BaseActivity() {
         LogoAnimation()
 
         val loginCheck = Preferences.loadStringValue(applicationContext, Preferences.LOGINCHECK, "")
-
 
         Handler(mainLooper).postDelayed({
             if (loginCheck.equals("Open")) {
