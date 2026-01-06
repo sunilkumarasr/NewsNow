@@ -13,11 +13,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.example.TrendingArticles
 import com.example.newsatnow.R
-import com.example.newsatnow.databinding.TrendingItemsBinding
+import com.example.newsatnow.databinding.TrendingMainItemsBinding
+import com.example.newsatnow.view.Activitys.TrandingDatailsActivity
 import com.example.newsatnow.view.ArticalDetailActivity
 import com.example.newsatnow.view.VideoPlayActivity
 import com.example.newsatnow.view.YoutubeVideoPlayActivity
-
 
 class TrendingAdapter(
     private val originalList: ArrayList<TrendingArticles>
@@ -26,7 +26,7 @@ class TrendingAdapter(
     private var filteredList = ArrayList<TrendingArticles>(originalList)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        TrendingItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        TrendingMainItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -38,7 +38,6 @@ class TrendingAdapter(
 
         Glide.with(context)
             .load(item.image)
-            .transform(CenterCrop(), RoundedCorners(10))
             .placeholder(R.drawable.loading)
             .into(holder.binding.trendingImage)
 
@@ -74,7 +73,7 @@ class TrendingAdapter(
 
         holder.binding.card.setOnClickListener {
             context.startActivity(
-                Intent(context, ArticalDetailActivity::class.java)
+                Intent(context, TrandingDatailsActivity::class.java)
                     .putExtra("id", item.id.toString())
             )
         }
@@ -106,6 +105,6 @@ class TrendingAdapter(
         }
     }
 
-    class ViewHolder(val binding: TrendingItemsBinding) :
+    class ViewHolder(val binding: TrendingMainItemsBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

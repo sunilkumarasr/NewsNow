@@ -27,4 +27,5 @@ data class TrendingArticles (
   @SerializedName("views"          ) var views         : Int?              = null,
   @SerializedName("comments"       ) var comments      : ArrayList<String> = arrayListOf(),
   @SerializedName("comments_count" ) var commentsCount : Int?              = null
+
 )

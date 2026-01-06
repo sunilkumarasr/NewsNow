@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.WindowCompat
@@ -16,14 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.newsatnow.BaseActivity
 import com.example.newsatnow.Config.ViewController
 import com.example.newsatnow.R
-import com.example.newsatnow.adapter.CatAdapter
-import com.example.newsatnow.adapter.FuturedAdapter
-import com.example.newsatnow.adapter.TrendingAdapter
 import com.example.newsatnow.databinding.ActivityManualLocationBinding
-import com.example.newsatnow.model.Category
 import com.example.newsatnow.model.Citys.CitysList
 import com.example.newsatnow.view.UserIntrestsActivity
-import com.example.newsatnow.viewModel.ArticalDetailViewModel
 import com.example.newsatnow.viewModel.CitysViewModel
 
 class ManualLocationActivity : BaseActivity() {

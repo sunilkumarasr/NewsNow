@@ -28,8 +28,12 @@ class ArticalDetailActivity : BaseActivity() {
         enableEdgeToEdge()
         binding = ActivityArticalDetailBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
         val id = intent.extras?.getString("id")
+
         mainActivityViewModel = ViewModelProvider(this)[ArticalDetailViewModel::class.java]
+
+
         mainActivityViewModel.getArticalDetail(id)!!.observe(this, Observer { serviceSetterGetter ->
             binding?.progressBar?.visibility = View.GONE
             Glide
@@ -100,9 +104,12 @@ class ArticalDetailActivity : BaseActivity() {
                 }
             }
         })
+
+
         binding?.backArrow?.setOnClickListener {
             finish()
         }
+
 
     }
 }

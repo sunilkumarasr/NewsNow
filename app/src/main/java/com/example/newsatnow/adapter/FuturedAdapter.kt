@@ -77,6 +77,7 @@ class FuturedAdapter(
                     .putExtra("id", item.id.toString())
             )
         }
+
     }
 
     override fun getItemCount(): Int = filteredList.size

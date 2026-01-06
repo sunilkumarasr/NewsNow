@@ -8,12 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.newsatnow.R
-import com.example.newsatnow.adapter.CatAdapter
-import com.example.newsatnow.adapter.FuturedAdapter
 import com.example.newsatnow.adapter.LiveNewsAdapter
-import com.example.newsatnow.adapter.TrendingAdapter
-import com.example.newsatnow.databinding.FragmentHomeBinding
 import com.example.newsatnow.databinding.FragmentLiveBinding
 import com.example.newsatnow.viewModel.LiveNewsViewModel
 

@@ -5,26 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/light_bg"
     tools:context=".view.TrendingActivity">
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/introViewPager"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent" />
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/into_tab_layout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:tabBackground="@drawable/tab_pager_selector"
-        app:tabGravity="center"
-        android:visibility="gone"
-        android:paddingBottom="50dp"
-        android:background="@color/white"
-        app:tabIndicatorHeight="0dp" />
+        android:layoutAnimation="@anim/layout_animation_slide_from_bottom" />
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#37000000"

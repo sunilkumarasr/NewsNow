@@ -55,4 +55,5 @@
     <string name="enter_6_digit_code_received">Enter 6-digit Code Received</string>
     <string name="confirm">Confirm</string>
     <string name="waiting_for_otp">Waiting for OTP</string>
+    <string name="noDataFound">No Data Found</string>
 </resources>

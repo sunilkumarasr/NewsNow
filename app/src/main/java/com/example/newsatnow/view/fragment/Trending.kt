@@ -7,31 +7,41 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsatnow.adapter.TrendingOnboardingAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.newsatnow.adapter.TrendingAdapter
+import com.example.newsatnow.adapter.TrendingHomeAdapter
 import com.example.newsatnow.databinding.FragmentTrendingBinding
 import com.example.newsatnow.viewModel.TrendingViewModel
-import com.google.android.material.tabs.TabLayoutMediator
 
 class Trending : Fragment() {
+
     var binding : FragmentTrendingBinding? = null
+
     lateinit var viewModel: TrendingViewModel
+
+    lateinit var trendingAdapter: TrendingAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTrendingBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[TrendingViewModel::class.java]
-        viewModel.getTrendingDetails()!!.observe(viewLifecycleOwner, Observer { serviceSetterGetter ->
-                binding?.progressBar?.visibility = View.GONE
-                binding?.introViewPager?.adapter = TrendingOnboardingAdapter(serviceSetterGetter.trendingArticles)
-                binding?.intoTabLayout?.let {
-                    binding?.introViewPager?.let { viewPager ->
-                        TabLayoutMediator(it, viewPager) { tab, position ->
 
-                        }
-                    }
-                }?.attach()
+
+        binding?.recyclerView?.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        viewModel.getTrendingDetails()!!.observe(viewLifecycleOwner, Observer { serviceSetterGetter ->
+
+            trendingAdapter = TrendingAdapter(ArrayList(serviceSetterGetter.trendingArticles))
+            binding?.recyclerView?.adapter = trendingAdapter
+            binding?.recyclerView?.isNestedScrollingEnabled = false
+
+
         })
+
+
         return binding?.root
     }
 

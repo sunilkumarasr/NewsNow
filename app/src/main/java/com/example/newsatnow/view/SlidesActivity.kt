@@ -38,7 +38,6 @@ import com.example.newsatnow.view.Logins.MobileLoginActivity
 
 class SlidesActivity : ComponentActivity() {
 
-
     private val images = listOf(
         R.drawable.intro_1,
         R.drawable.intro_2,
