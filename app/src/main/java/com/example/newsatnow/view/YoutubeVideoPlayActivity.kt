@@ -12,8 +12,10 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 class YoutubeVideoPlayActivity : AppCompatActivity() {
+
     var binding: ActivityYoutubeVideoPlayBinding? = null
     var videoID = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityYoutubeVideoPlayBinding.inflate(layoutInflater)

@@ -9,13 +9,10 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.example.TrendingArticles
 import com.example.newsatnow.R
 import com.example.newsatnow.databinding.TrendingMainItemsBinding
-import com.example.newsatnow.view.Activitys.TrandingDatailsActivity
-import com.example.newsatnow.view.ArticalDetailActivity
+import com.example.newsatnow.view.Activitys.TrendingDetailsActivity
 import com.example.newsatnow.view.VideoPlayActivity
 import com.example.newsatnow.view.YoutubeVideoPlayActivity
 
@@ -73,7 +70,7 @@ class TrendingAdapter(
 
         holder.binding.card.setOnClickListener {
             context.startActivity(
-                Intent(context, TrandingDatailsActivity::class.java)
+                Intent(context, TrendingDetailsActivity::class.java)
                     .putExtra("id", item.id.toString())
             )
         }

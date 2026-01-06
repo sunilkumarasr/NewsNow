@@ -3,5 +3,5 @@
     <!-- Color for selected state -->
     <item android:color="@color/app_main_color" android:state_checked="true" />
     <!-- Color for unselected state -->
-    <item android:color="@color/white" />
+    <item android:color="@color/et_border_color" />
 </selector>

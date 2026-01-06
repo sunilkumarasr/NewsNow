@@ -83,12 +83,42 @@
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
-            android:background="@color/app_gray_color"
+            android:background="@color/white"
             android:clipChildren="false"
             android:scrollIndicators="left"
             app:elevation="0dp"
             app:itemIconTint="@color/bottom_navigation_color_selector"
             app:menu="@menu/news_menu" />
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/relativeBo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                android:id="@+id/bottomNav"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="56dp"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:background="@color/white"-->
+<!--                app:elevation="0dp"-->
+<!--                app:itemIconTint="@color/bottom_navigation_color_selector"-->
+<!--                app:menu="@menu/news_menu" />-->
+
+<!--            &lt;!&ndash; Center Big Icon &ndash;&gt;-->
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/fabCenter"-->
+<!--                android:layout_width="64dp"-->
+<!--                android:layout_height="64dp"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginBottom="28dp"-->
+<!--                app:srcCompat="@drawable/live_streaming"-->
+<!--                app:tint="@color/white"-->
+<!--                app:backgroundTint="@color/app_main_color" />-->
+
+<!--        </RelativeLayout>-->
+
 
     </RelativeLayout>
 

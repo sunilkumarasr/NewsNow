@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".view.Activitys.TrandingDatailsActivity">
+    tools:context=".view.Activitys.TrendingDetailsActivity">
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -41,7 +41,7 @@
 
 
     <ImageView
-        android:id="@+id/back_arrow"
+        android:id="@+id/backArrow"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="30dp"

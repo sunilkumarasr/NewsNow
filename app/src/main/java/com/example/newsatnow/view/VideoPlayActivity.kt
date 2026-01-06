@@ -16,8 +16,11 @@ import androidx.media3.exoplayer.ExoPlayer
 import com.example.newsatnow.BaseActivity
 
 class VideoPlayActivity : BaseActivity() {
+
     var binding : ActivityVideoPlayBinding? = null
     private lateinit var exoPlayer: ExoPlayer
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
